@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect images to webp-on-demand.php (if browser supports webp)
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteRule ^(.*)\.(jpe?g|png)$ webp-on-demand.php?source=%{SCRIPT_FILENAME} [NC,L]
+</IfModule>
+
+AddType image/webp .webp
